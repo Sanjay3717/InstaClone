@@ -61,7 +61,7 @@ export const FormInput = styled.input`
   width: 312px;
   height: 40px;
   flex-shrink: 0;
-  color: #eeeeee;
+
   border-radius: 2px;
   background: #eee;
 `
@@ -78,4 +78,9 @@ export const LoginButton = styled.button`
   color: #ffffff;
   border-width: 0px;
   border-radius: 10px;
+  cursor: pointer;
+`
+
+export const ErrorMessageText = styled.p`
+  color: red;
 `
