@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Header from '../Header'
+import Stories from '../Stories'
 import './index.css'
 import {HomeContainer} from './styledComponents'
 
@@ -8,7 +9,7 @@ class Home extends Component {
     return (
       <HomeContainer>
         <Header />
-        <h1>Welcome</h1>
+        <Stories />
       </HomeContainer>
     )
   }

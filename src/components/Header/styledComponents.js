@@ -1,12 +1,16 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
-export const Header = styled.div`
+export const Header = styled.nav`
   width: 1440px;
   height: 64px;
   flex-shrink: 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media screen and (max-width: 490px) {
+    display: none;
+  }
 `
 
 export const HeaderLogoContainer = styled.div`
@@ -54,13 +58,16 @@ export const SearchTab = styled.input`
   color: #dbdbdb;
   padding-left: 15px;
   border: 0px;
+  color: black;
 `
 export const SearchTabImage = styled.div`
   background-color: #dbdbdb;
   width: 34px;
   height: 26px;
   flex-shrink: 0;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 export const HeaderButtons = styled.button`
   border: 0px;
@@ -89,4 +96,9 @@ export const LogoutButton = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
+`
+
+export const HomeLink = styled(Link)`
+  text-decoration: none;
+  margin-top: 30px;
 `
