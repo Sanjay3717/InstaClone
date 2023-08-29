@@ -15,8 +15,9 @@ export const Header = styled.nav`
 
 export const HeaderLogoContainer = styled.div`
   width: 200px;
+
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 `
 
@@ -33,6 +34,7 @@ export const HeaderLogoText = styled.h1`
   font-style: normal;
   font-weight: 500;
   line-height: 24px; /* 120% */
+  margin-top: -1px;
 `
 
 export const HeaderContentContainer = styled.div`
