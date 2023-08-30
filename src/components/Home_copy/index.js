@@ -1,7 +1,6 @@
 import {Component} from 'react'
 import Header from '../Header'
 import Stories from '../Stories'
-import UserPost from '../UserPost'
 import './index.css'
 import {HomeContainer} from './styledComponents'
 
@@ -11,7 +10,6 @@ class Home extends Component {
       <HomeContainer>
         <Header />
         <Stories />
-        <UserPost />
       </HomeContainer>
     )
   }

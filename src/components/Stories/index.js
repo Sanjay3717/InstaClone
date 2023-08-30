@@ -1,15 +1,23 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Slider from 'react-slick'
+import Loader from 'react-loader-spinner'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import StoryItem from '../StoryItem'
-
 import './index.css'
+
+const apiStatusConstant = {
+  initial: 'INITIAL',
+  inProgress: 'IN_PROGRESS',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+}
 
 class Stories extends Component {
   state = {
     storyDetails: [],
+    isLoading: false,
+    apiStatus: apiStatusConstant.initial,
   }
 
   componentDidMount() {
@@ -17,6 +25,7 @@ class Stories extends Component {
   }
 
   getStoryDetails = async () => {
+    this.setState({isLoading: true, apiStatus: apiStatusConstant.inProgress})
     const jwtToken = Cookies.get('jwt_token')
     const url = 'https://apis.ccbp.in/insta-share/stories'
     const options = {
@@ -33,11 +42,17 @@ class Stories extends Component {
         userName: eachItem.user_name,
       }))
 
-      this.setState({storyDetails: formattedData})
+      this.setState({
+        storyDetails: formattedData,
+        isLoading: false,
+        apiStatus: apiStatusConstant.success,
+      })
+    } else {
+      this.setState({isLoading: false, apiStatus: apiStatusConstant.failure})
     }
   }
 
-  renderSlider = () => {
+  renderSuccessView = () => {
     const {storyDetails} = this.state
     const settings = {
       dots: false,
@@ -92,14 +107,37 @@ class Stories extends Component {
     )
   }
 
-  render() {
-    const {storyDetails} = this.state
-    const {storyUrl, userId, userName} = storyDetails
-    console.log(storyDetails)
+  renderInProgressView = () => (
+    <div className="loader-container" data-testid="loader">
+      <Loader type="Rings" color="#ffffff" height={80} width={80} />
+    </div>
+  )
 
+  renderFailureView = () => (
+    <div>
+      <button type="button">Retry</button>
+    </div>
+  )
+
+  renderOutput = () => {
+    const {apiStatus} = this.state
+    switch (apiStatus) {
+      case apiStatusConstant.success:
+        return this.renderSuccessView()
+      case apiStatusConstant.failure:
+        return this.renderFailureView()
+      case apiStatusConstant.inProgress:
+        return this.renderInProgressView()
+
+      default:
+        return null
+    }
+  }
+
+  render() {
     return (
       <div className="main-container">
-        <div className="slick-container">{this.renderSlider()}</div>
+        <div className="slick-container">{this.renderOutput()}</div>
       </div>
     )
   }

@@ -1,0 +1,40 @@
+.post-profile-picture {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 28px;
+  margin-left: 20px;
+}
+.post-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+.profile-name {
+  color: #262626;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  padding-left: 30px;
+}
+.user-details-container {
+  width: 1040px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 4px 4px 0px 0px;
+  border: 1px solid #dbdbdb;
+  background: #fff;
+  margin-left: 100px;
+  display: flex;
+  align-items: center;
+}
+.post-image {
+  width: 1040px;
+  height: 614px;
+  flex-shrink: 0;
+  padding-left: 50px;
+}
